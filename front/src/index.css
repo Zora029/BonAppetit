@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply box-border bg-bg text-base font-normal;
+  }
+
+  input {
+    @apply p-3;
+  }
+}
+
+.p-multiselect-label {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.p-multiselect-token {
+  margin: 0;
+}
+
+/* .primary {
+  color: #4ade80;
+}
+.secondary {
+  color: #f87171;
+}
+.selected {
+  color: #60a5fa;
+} 
+.bodylight {
+  color: #4b5563;
+}
+.done {
+  color: #607d8b;
+} */

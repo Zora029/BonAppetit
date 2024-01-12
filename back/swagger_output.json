@@ -1,0 +1,2906 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1.0.0",
+    "title": "BonAppetit API",
+    "description": "ExpressJS API for BonAppetit Project."
+  },
+  "host": "localhost:8080",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "apiKeyAuth": {
+      "type": "apiKey",
+      "in": "headers",
+      "name": "x-access-token",
+      "description": "Token"
+    }
+  },
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add new Utilisateur.",
+            "schema": {
+              "$ref": "#/definitions/Register"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Login Utilisateur.",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/cantine/": {
+      "get": {
+        "tags": [
+          "Cantine"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Cantine"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nomreq": {
+                  "example": "any"
+                },
+                "debut_contrat": {
+                  "example": "any"
+                },
+                "fin_contrat": {
+                  "example": "any"
+                },
+                "type_contrat": {
+                  "example": "any"
+                },
+                "nombre_repas": {
+                  "example": "any"
+                },
+                "matricule_utilisateur": {
+                  "example": "any"
+                },
+                "actif": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Cantine"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete multiple row.",
+            "schema": {
+              "$ref": "#/definitions/arrayOfStrings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/cantine/{id}": {
+      "get": {
+        "tags": [
+          "Cantine"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Cantine"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "debut_contrat": {
+                  "example": "any"
+                },
+                "fin_contrat": {
+                  "example": "any"
+                },
+                "actif": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Cantine"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/categorie/": {
+      "get": {
+        "tags": [
+          "Categorie"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Categorie"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nomreq": {
+                  "example": "any"
+                },
+                "limitereq": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Categorie"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete multiple row.",
+            "schema": {
+              "$ref": "#/definitions/arrayOfStrings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/categorie/{id}": {
+      "get": {
+        "tags": [
+          "Categorie"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Categorie"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update one row.",
+            "schema": {
+              "$ref": "#/definitions/objectSchema"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Categorie"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/commande/one/{id}": {
+      "get": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/commande/": {
+      "post": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "etatreq": {
+                  "example": "any"
+                },
+                "date_menu": {
+                  "example": "any"
+                },
+                "codereq": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete multiple row.",
+            "schema": {
+              "$ref": "#/definitions/arrayOfStrings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/commande/client-update/{id}": {
+      "put": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update one row.",
+            "schema": {
+              "$ref": "#/definitions/objectSchema"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/commande/taking-commmand-for-client/{id}": {
+      "put": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/commande/{id}": {
+      "delete": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/commande/all-commandes-of-the-day": {
+      "get": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/commande/commande-list-for-weekly-report/{date}": {
+      "get": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/commande/commande-count-for-weekly-report/{date}": {
+      "get": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/commande/generate-default-choices/{id}": {
+      "post": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/commande/all/": {
+      "get": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/commande/{matricule}": {
+      "post": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "matricule",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "etatreq": {
+                  "example": "any"
+                },
+                "date_menu": {
+                  "example": "any"
+                },
+                "codereq": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/commande/admin-update/{id}": {
+      "put": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update one row.",
+            "schema": {
+              "$ref": "#/definitions/objectSchema"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/commande/admin-update-all-commande-com-to-np-from-date/{date}": {
+      "put": {
+        "tags": [
+          "Commande"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update one row.",
+            "schema": {
+              "$ref": "#/definitions/objectSchema"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/indisponibilite/": {
+      "get": {
+        "tags": [
+          "Indisponibilite"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Indisponibilite"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "date_ind": {
+                  "example": "any"
+                },
+                "matricule_utilisateur": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Indisponibilite"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete multiple row.",
+            "schema": {
+              "$ref": "#/definitions/arrayOfStrings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/indisponibilite/{id}": {
+      "get": {
+        "tags": [
+          "Indisponibilite"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Indisponibilite"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update one row.",
+            "schema": {
+              "$ref": "#/definitions/objectSchema"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Indisponibilite"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/indisponibilite/create-many": {
+      "post": {
+        "tags": [
+          "Indisponibilite"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "matricule_utilisateur": {
+                  "example": "any"
+                },
+                "date_ind": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/ingredient/": {
+      "get": {
+        "tags": [
+          "Ingredient"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Ingredient"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nomreq": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Ingredient"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete multiple row.",
+            "schema": {
+              "$ref": "#/definitions/arrayOfStrings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/ingredient/{id}": {
+      "get": {
+        "tags": [
+          "Ingredient"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Ingredient"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update one row.",
+            "schema": {
+              "$ref": "#/definitions/objectSchema"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Ingredient"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/menu/client/week-menu/{date}": {
+      "get": {
+        "tags": [
+          "Menu"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/menu/client/week-menu/": {
+      "get": {
+        "tags": [
+          "Menu"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/menu/client/{id}": {
+      "get": {
+        "tags": [
+          "Menu"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/menu/admin/week-menu/{date}": {
+      "get": {
+        "tags": [
+          "Menu"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/menu/{id}": {
+      "get": {
+        "tags": [
+          "Menu"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Menu"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update one row.",
+            "schema": {
+              "$ref": "#/definitions/objectSchema"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Menu"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/menu/": {
+      "post": {
+        "tags": [
+          "Menu"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "datereq": {
+                  "example": "any"
+                },
+                "date_limite": {
+                  "example": "any"
+                },
+                "id_cantine": {
+                  "example": "any"
+                },
+                "plats": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Menu"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete multiple row.",
+            "schema": {
+              "$ref": "#/definitions/arrayOfStrings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/notification/": {
+      "get": {
+        "tags": [
+          "Notification"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Notification"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "contenureq": {
+                  "example": "any"
+                },
+                "lienreq": {
+                  "example": "any"
+                },
+                "typereq": {
+                  "example": "any"
+                },
+                "destinatairereq": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Notification"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete multiple row.",
+            "schema": {
+              "$ref": "#/definitions/arrayOfStrings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/notification/preview": {
+      "get": {
+        "tags": [
+          "Notification"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/notification/{id}": {
+      "get": {
+        "tags": [
+          "Notification"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Notification"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update one row.",
+            "schema": {
+              "$ref": "#/definitions/objectSchema"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Notification"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/overview/cantine-overview": {
+      "get": {
+        "tags": [
+          "Overview"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/plat/all": {
+      "get": {
+        "tags": [
+          "Plat"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/plat/all/with-adorer": {
+      "get": {
+        "tags": [
+          "Plat"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/plat/one/with-adorer/{id}": {
+      "get": {
+        "tags": [
+          "Plat"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/plat/one/{id}": {
+      "get": {
+        "tags": [
+          "Plat"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/plat/all/plat-menu-options/": {
+      "get": {
+        "tags": [
+          "Plat"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/plat/": {
+      "post": {
+        "tags": [
+          "Plat"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "ingredients": {
+                  "example": "any"
+                },
+                "_plat": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Plat"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete multiple row.",
+            "schema": {
+              "$ref": "#/definitions/arrayOfStrings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/plat/{id}": {
+      "put": {
+        "tags": [
+          "Plat"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update one row.",
+            "schema": {
+              "$ref": "#/definitions/objectSchema"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Plat"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/utilisateur/information": {
+      "get": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/utilisateur/preferences": {
+      "get": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "preferences": {
+                  "example": "any"
+                },
+                "restrictions": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/utilisateur/adorer/{id}": {
+      "post": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/utilisateur/preferences/{id}": {
+      "get": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "preferences": {
+                  "example": "any"
+                },
+                "restrictions": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/utilisateur/all": {
+      "get": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/utilisateur/all-ids": {
+      "get": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/utilisateur/all-ids/{role}": {
+      "get": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "role",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/utilisateur/{id}": {
+      "get": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Update one row.",
+            "schema": {
+              "$ref": "#/definitions/objectSchema"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/utilisateur/": {
+      "post": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "matriculereq": {
+                  "example": "any"
+                },
+                "rolereq": {
+                  "example": "any"
+                },
+                "mot_de_passe": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Utilisateur"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Delete multiple row.",
+            "schema": {
+              "$ref": "#/definitions/arrayOfStrings"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Login": {
+      "type": "object",
+      "properties": {
+        "matricule_utilisateur": {
+          "type": "string",
+          "example": "ST11"
+        },
+        "mot_de_passe": {
+          "type": "string",
+          "example": "root"
+        }
+      },
+      "required": [
+        "matricule_utilisateur",
+        "mot_de_passe"
+      ]
+    },
+    "Register": {
+      "type": "object",
+      "properties": {
+        "matricule_utilisateur": {
+          "type": "string",
+          "example": "ST11"
+        },
+        "nom_utilisateur": {
+          "type": "string",
+          "example": "Zo"
+        },
+        "prenom_utilisateur": {
+          "type": "string",
+          "example": "Michael"
+        },
+        "email_utilisateur": {
+          "type": "string",
+          "example": "zo.michael.andri@gmail.com"
+        },
+        "tel_utilisateur": {
+          "type": "string",
+          "example": "0333452993"
+        },
+        "poste_utilisateur": {
+          "type": "string",
+          "example": "stagiaire"
+        },
+        "role_utilisateur": {
+          "type": "string",
+          "example": "admin"
+        },
+        "mot_de_passe": {
+          "type": "string",
+          "example": "root"
+        }
+      },
+      "required": [
+        "matricule_utilisateur",
+        "nom_utilisateur",
+        "prenom_utilisateur",
+        "email_utilisateur",
+        "tel_utilisateur",
+        "poste_utilisateur",
+        "role_utilisateur",
+        "mot_de_passe"
+      ]
+    },
+    "arrayOfStrings": {
+      "type": "array",
+      "example": [
+        "id"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "objectSchema": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "example": "example"
+        }
+      }
+    }
+  }
+}

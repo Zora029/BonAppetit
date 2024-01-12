@@ -1,0 +1,51 @@
+/** =================== MERIENDA =================== **/
+
+/** Merienda Light **/
+@font-face {
+  font-family: "Merienda";
+  font-weight: 300;
+  font-style: normal;
+  src: url("Merienda-Light.ttf") format("truetype");
+}
+/** Merienda Regular **/
+@font-face {
+  font-family: "Merienda";
+  font-weight: 400;
+  font-style: normal;
+  src: url("Merienda-Regular.ttf") format("truetype");
+}
+/** Merienda Medium **/
+@font-face {
+  font-family: "Merienda";
+  font-weight: 500;
+  font-style: normal;
+  src: url("Merienda-Medium.ttf") format("truetype");
+}
+/** Merienda Semi-bold **/
+@font-face {
+  font-family: "Merienda";
+  font-weight: 600;
+  font-style: normal;
+  src: url("Merienda-SemiBold.ttf") format("truetype");
+}
+/** Merienda Bold **/
+@font-face {
+  font-family: "Merienda";
+  font-weight: 700;
+  font-style: normal;
+  src: url("Merienda-Bold.ttf") format("truetype");
+}
+/** Merienda extra-bold **/
+@font-face {
+  font-family: "Merienda";
+  font-weight: 800;
+  font-style: normal;
+  src: url("Merienda-ExtraBold.ttf") format("truetype");
+}
+/** Merienda Black **/
+@font-face {
+  font-family: "Merienda";
+  font-weight: 900;
+  font-style: normal;
+  src: url("Merienda-Black.ttf") format("truetype");
+}
